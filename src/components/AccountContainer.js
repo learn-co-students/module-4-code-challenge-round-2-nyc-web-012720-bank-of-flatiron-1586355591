@@ -6,7 +6,8 @@ import AddTransactionForm from "./AddTransactionForm";
 class AccountContainer extends Component {
 
   state = {
-    transactions: []
+    transactions: [],
+    filter: ""
   }
 
   componentDidMount() {
@@ -15,13 +16,17 @@ class AccountContainer extends Component {
     .then(data => this.setState({transactions: data}))
   }
 
+  changeFilter = (newValue) => {
+      this.setState({filter: newValue})
+  }
+
   render() {
     console.log(this.state)
     return (
       <div>
-        <Search />
+        <Search filter={this.changeFilter}/>
         <AddTransactionForm />
-        <TransactionsList transactions = {this.state.transactions}/>
+        <TransactionsList transactions = {this.state.transactions} filter={this.state.filter}/>
       </div>
     );
   }

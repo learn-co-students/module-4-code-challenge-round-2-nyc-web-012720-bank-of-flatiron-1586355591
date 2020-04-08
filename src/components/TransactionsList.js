@@ -4,7 +4,12 @@ import Transaction from "./Transaction";
 const TransactionsList = (props) => {
 
   const renderTransactions = () => {
-    return props.transactions.map(e => {
+
+    let transToDisplay = props.transactions.filter(trans => {
+      return trans.description.includes(props.filter)
+    })
+
+    return transToDisplay.map(e => {
       return <Transaction key ={e.id} trans={e}/>
     })
   }
