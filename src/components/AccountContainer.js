@@ -7,7 +7,8 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    searchTerm: ""
+    searchTerm: "",
+    sortBy: ""
   }
 
   componentDidMount() {
@@ -36,6 +37,12 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSortBy = (event) => {
+    this.setState({
+      sortBy: event.target.value
+    })
+  }
+
   handleFilter = () => {
     if (this.state.searchTerm !== "") {
       return this.state.transactions.filter(transaction => {
@@ -48,12 +55,29 @@ class AccountContainer extends Component {
     }
   }
 
+  handleSort = () => {
+    let filtered = this.handleFilter()
+    if (this.state.sortBy === "category") {
+      return [...filtered].sort((transaction1, transaction2) => {
+        return transaction1.category.localeCompare(transaction2.category)
+      })
+    } 
+    if (this.state.sortBy === "description") {
+      return [...filtered].sort((transaction1, transaction2) => {
+        return transaction1.description.localeCompare(transaction2.description)
+      })
+    }
+    else {
+      return filtered
+    }
+  }
+
   render() {
     return (
       <div>
-        <Search handleSearchTerm={this.handleSearchTerm} searchTerm={this.state.searchTerm}/>
+        <Search handleSearchTerm={this.handleSearchTerm} searchTerm={this.state.searchTerm} handleSortBy={this.handleSortBy}/>
         <AddTransactionForm handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={this.handleFilter()}/>
+        <TransactionsList transactions={this.handleSort()}/>
       </div>
     );
   }
