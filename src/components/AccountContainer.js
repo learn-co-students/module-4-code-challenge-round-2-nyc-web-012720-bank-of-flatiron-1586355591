@@ -5,6 +5,7 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   render() {
+    console.log("hi")
     return (
       <div>
         <Search />
@@ -13,6 +14,6 @@ class AccountContainer extends Component {
       </div>
     );
   }
-}
+} 
 
 export default AccountContainer;
