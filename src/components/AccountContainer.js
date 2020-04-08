@@ -3,13 +3,33 @@ import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
-class AccountContainer extends Component {
+class AccountContainer extends Component {  
+
+  state = {
+    transactions: [],
+    searchTrans: ''
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:6001/transactions')
+    .then(res => res.json())
+    .then( transactions => this.setState({transactions}))
+  } 
+
+  handleSearch = (event) => {
+    this.setState({ searchTrans: event.target.value})
+  }
+
+
+
   render() {
+    console.log(this.state.transactions)
     return (
       <div>
-        <Search />
-        <AddTransactionForm />
-        <TransactionsList />
+        <Search handleSearch={this.handleSearch}/>
+        <AddTransactionForm  />
+        <TransactionsList transactions={this.state.transactions} 
+                          searchTrans={this.state.searchTrans}/>
       </div>
     );
   }
