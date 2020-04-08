@@ -97,6 +97,13 @@
       "category": "Transportation",
       "amount": "20000.75",
       "id": 14
+    },
+    {
+      "date": "2019-12-20",
+      "description": "mansion",
+      "category": "house",
+      "amount": "10000000",
+      "id": 15
     }
   ]
 }

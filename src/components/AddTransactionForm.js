@@ -35,6 +35,12 @@ class AddTransactionForm extends Component {
     })
     .then(res => res.json())
     .then(transaction => this.props.addTransaction(transaction))
+    this.setState({
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    })
   }
 
   render() {
