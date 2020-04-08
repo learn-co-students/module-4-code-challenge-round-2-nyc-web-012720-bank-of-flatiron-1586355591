@@ -34,6 +34,15 @@ class AccountContainer extends Component {
     })
   }
 
+  handleDeleteClick = transactionId => {
+    fetch(`http://localhost:6001/transactions/` + transactionId, {
+      method: 'DELETE'
+    })
+    .then(() => this.setState((prevState) => ({
+      transactions: prevState.transactions.filter(transaction => transaction.id !== transactionId)
+      })))
+  }
+
   render() {
     let transactionsCopy = [...this.state.transactions]
     transactionsCopy = transactionsCopy.filter(transaction => transaction.description.toLowerCase().includes(this.state.searchText))
@@ -49,7 +58,7 @@ class AccountContainer extends Component {
         <Search searchText={this.state.searchText} handleSearchChange={this.handleSearchChange}/>
         <Sort sortBy={this.state.sortBy} handleChange={this.handleSortChange}/>
         <AddTransactionForm appendNewTransaction={this.appendNewTransaction}/>
-        <TransactionsList transactions={transactionsCopy}/>
+        <TransactionsList transactions={transactionsCopy} handleClick={this.handleDeleteClick}/>
       </div>
     );
   }
