@@ -5,7 +5,7 @@ class TransactionsList extends React.Component {
 
   renderT() {
     return this.props.transactions.map( (tran, index) => {
-      return <Transaction key={index} transaction={tran}/>
+      return <Transaction key={index} transaction={tran} deleteTransaction={this.props.deleteTransaction}/>
     })
   }
   

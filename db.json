@@ -92,11 +92,11 @@
       "id": 13
     },
     {
-      "date": "2020-04-09",
-      "description": "only chrome",
-      "category": "idk",
-      "amount": "-0.01",
-      "id": 14
+      "date": "2020-04-22",
+      "description": "Sailboat",
+      "category": "transport",
+      "amount": "59999",
+      "id": 15
     }
   ]
 }

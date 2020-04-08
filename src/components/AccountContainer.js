@@ -51,6 +51,13 @@ class AccountContainer extends Component {
       })
   }
 
+  deleteTransaction = (deletedTran) => {
+    fetch(`http://localhost:6001/transactions/${deletedTran.id}`, {method: "DELETE"})
+  let newArray = this.state.transactions.map( tran => { return tran.id !== deletedTran.id && tran })
+  this.setState({
+    transactions: newArray
+  })
+}
 
   render() {
     console.log(this.state.transactions)
@@ -58,7 +65,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>
         <AddTransactionForm handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={this.filterTransactions()}/>
+        <TransactionsList transactions={this.filterTransactions()} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }
