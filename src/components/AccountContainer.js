@@ -20,13 +20,13 @@ class AccountContainer extends Component {
 
   handleAddTransaction = (newTransaction) => {
     this.setState({
-      transactions: [...this.state.transactions, newTransaction]
+      displayTransactions: [...this.state.displayTransactions, newTransaction]
     })
   }
 
   handleFilter = (event) => {
     console.log(event.target.value)
-    let filteredTransactions = this.state.displayTransactions.filter(transaction => transaction.description.includes(event.target.value))
+    let filteredTransactions = this.state.displayTransactions.filter(transaction => transaction.description.toLowerCase().includes(event.target.value.toLowerCase()))
     if (event.target.value.length > 0) {
       this.setState({
         displayTransactions: filteredTransactions
