@@ -10,7 +10,8 @@ class AccountContainer extends Component {
     date: "",
     description: "",
     category: "",
-    amount: 0
+    amount: 0,
+    searchTerm: ""
   }
 
   componentDidMount() {
@@ -42,14 +43,18 @@ class AccountContainer extends Component {
   }
   
   render() {
+    let displayTransactions = this.state.transactions.filter(transaction => transaction.description.includes(this.state.searchTerm))
     return (
       <div>
-        <Search />
+        <Search 
+        searchTerm={this.state.searchTerm} 
+        handleChange={this.handleChange}/>
         <AddTransactionForm 
         txnState={this.state} 
         handleChange={this.handleChange}
         submitTxn={this.submitTxn}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList 
+        transactions={displayTransactions}/>
       </div>
     );
   }
