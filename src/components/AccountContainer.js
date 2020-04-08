@@ -5,14 +5,15 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   state = {
-    transactions: []
+    transactions: [], 
+    filterTerm: ""
   }
 
   componentDidMount() {
     fetch('http://localhost:6001/transactions')
       .then(resp => resp.json())
       .then(data => this.setState({
-        transactions: data 
+        transactions: data
       }))
   }
 
@@ -22,10 +23,18 @@ class AccountContainer extends Component {
     })
   }
 
+  handleFilter = (event) => {
+    let filteredTransactions = this.state.transactions.filter(transaction => transaction.description === this.state.filterTerm)
+    this.setState({
+      filterTerm: event.target.value, 
+      transactions: filteredTransactions
+    })
+  }
+
   render() {
     return (
       <div>
-        <Search />
+        <Search filterTerm={this.state.filterTerm} handleFilter={this.handleFilter} />
         <AddTransactionForm handleAddTransaction={this.handleAddTransaction} />
         <TransactionsList transactions={this.state.transactions} />
       </div>
