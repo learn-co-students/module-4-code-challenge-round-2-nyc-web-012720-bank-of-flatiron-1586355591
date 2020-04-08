@@ -27,7 +27,7 @@ class AddTransactionForm extends Component {
 
     fetch(postApi, requestObject)
     .then(response => response.json())
-    .then(data => console.log('Success', data))
+    .then(data => this.props.handleAddTransaction(data))
     .catch(error => console.error('Error:', error))
   }
 

@@ -29,11 +29,17 @@ class AccountContainer extends Component {
     })
   }
 
+  handleAddTransaction = (data) => {
+    this.setState({
+      displayTransactions: [...this.state.displayTransactions, data]
+    }, () => console.log('Success', data))
+  }
+
   render() {
     return (
       <div>
         <Search handleSearchBar={this.handleSearchBar}/>
-        <AddTransactionForm />
+        <AddTransactionForm handleAddTransaction={this.handleAddTransaction}/>
         <TransactionsList displayTransactions={this.state.displayTransactions}/>
       </div>
     );

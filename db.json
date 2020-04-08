@@ -90,6 +90,13 @@
       "category": "Transportation",
       "amount": "-20.51",
       "id": 13
+    },
+    {
+      "date": "2020-04-07",
+      "description": "Whole Foods LLC.",
+      "category": "Food",
+      "amount": "320.11",
+      "id": 14
     }
   ]
 }
