@@ -21,11 +21,32 @@ class AccountContainer extends Component {
       .catch(err => console.log(err))
   }
 
+  addTransaction = (event, transaction) => {
+    event.preventDefault();
+    const {date, description, category, amount} = transaction;
+    
+    const newTransactionHTTPObj = {
+      'method': 'POST',
+      'headers': {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      'body': JSON.stringify({date, description, category, amount})
+    }
+
+    fetch(this.transactionsUrl, newTransactionHTTPObj)
+      .then(res => res.json())
+      .then(transaction => {
+        console.log(transaction)
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm handleSubmit={this.addTransaction}/>
         <TransactionsList transactions={this.state.displayedTransactions}/>
       </div>
     );
