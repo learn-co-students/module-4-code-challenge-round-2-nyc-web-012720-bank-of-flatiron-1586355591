@@ -104,6 +104,20 @@
       "category": "um",
       "amount": "0.15",
       "id": 15
+    },
+    {
+      "date": "2020-04-02",
+      "description": "really different tho",
+      "category": "Just cuz yoooo",
+      "amount": "15.50",
+      "id": 16
+    },
+    {
+      "date": "2020-04-06",
+      "description": "actually magic",
+      "category": "i mean see for yourself",
+      "amount": "15000",
+      "id": 17
     }
   ]
 }

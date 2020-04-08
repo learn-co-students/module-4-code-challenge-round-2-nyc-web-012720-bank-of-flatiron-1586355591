@@ -23,7 +23,6 @@ class AccountContainer extends Component {
     .then(transactions => this.setState({ transactions }))
   }
 
-
   renderTransactions = () => {
     let copiedTransactions = [...this.state.transactions]
     if (this.state.search !== ""){
@@ -84,7 +83,6 @@ class AccountContainer extends Component {
   }
 
   render() {
-    console.log(this.state.sort)
     return (
       <div>
         <Search 
