@@ -35,9 +35,29 @@ class AccountContainer extends Component {
 
   postTransaction = (transaction) => {
     console.log(transaction.description);
-    // fetch("http://localhost:6001/transactions")
-    //   .then()
-    //   .then()
+    fetch("http://localhost:6001/transactions", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date: transaction.date,
+        description: transaction.description,
+        category: transaction.category,
+        amount: parseFloat(transaction.amount),
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((newTransaction) => {
+        this.setState({
+          allTransactions: [...this.state.allTransactions, newTransaction],
+          searchedTransactions: [
+            ...this.state.searchedTransactions,
+            newTransaction,
+          ],
+        });
+      });
   };
 
   render() {

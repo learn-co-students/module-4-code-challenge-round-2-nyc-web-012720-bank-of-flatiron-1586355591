@@ -83,6 +83,34 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-05",
+      "description": "Starbucks",
+      "category": "Food",
+      "amount": "-10.00",
+      "id": 13
+    },
+    {
+      "date": "2020-04-08",
+      "description": "Starbucks",
+      "category": "Food",
+      "amount": -5,
+      "id": 14
+    },
+    {
+      "date": "2020-04-20",
+      "description": "Starbucks",
+      "category": "Food",
+      "amount": -5.5,
+      "id": 15
+    },
+    {
+      "date": "2020-04-20",
+      "description": "Starbucks",
+      "category": "Food",
+      "amount": -5.55,
+      "id": 16
     }
   ]
 }
