@@ -5,6 +5,8 @@ import "../stylesheets/App.css";
 class App extends Component {
   state = {
     transactions: [],
+    queriedTransactions: [],
+    searchQuery: "",
   };
 
   componentDidMount() {
@@ -24,6 +26,17 @@ class App extends Component {
     }).then((newTransaction) => console.log);
   };
 
+  handleSearch = (e) => {
+    let query = e.target.value;
+    let results = this.state.transactions.filter((transaction) => {
+      return (
+        transaction.description.toString().includes(query.toString()) &&
+        transaction
+      );
+    });
+    return this.setState({ transactions: results });
+  };
+
   render() {
     return (
       <div className="ui raised segment">
@@ -33,6 +46,7 @@ class App extends Component {
         <AccountContainer
           transactions={this.state.transactions}
           handleSubmit={this.handleSubmit}
+          handleSearch={this.handleSearch}
         />
       </div>
     );
