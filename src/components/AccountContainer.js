@@ -14,7 +14,8 @@ class AccountContainer extends Component {
     description: "",
     category: "",
     amount: 0,
-    searchTerm: ""
+    searchTerm: "",
+    sortBy: ""
   }
 
   componentDidMount() {
@@ -62,6 +63,15 @@ class AccountContainer extends Component {
   
   render() {
     let displayTransactions = this.state.transactions.filter(transaction => transaction.description.includes(this.state.searchTerm))
+    if (this.state.sortBy === "description") {
+      displayTransactions.sort((a,b) => a.description > b.description ? 1 : -1)
+    }
+    else if (this.state.sortBy === "category") {
+      displayTransactions.sort((a,b) => a.category > b.category ? 1 : -1)
+    }
+
+
+
     return (
       <div>
         <Search 
