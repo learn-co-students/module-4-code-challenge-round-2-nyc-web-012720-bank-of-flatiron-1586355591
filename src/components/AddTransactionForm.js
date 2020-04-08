@@ -15,8 +15,9 @@ class AddTransactionForm extends Component {
     console.log(event.target.name)
     this.setState({[event.target.name]: event.target.value});
   }
+  
 
-  handleSubmit(event) {
+  handleSubmit = (event)  => {
     event.preventDefault();
 
     const { date, description , category , amount } = this.state
@@ -27,16 +28,21 @@ class AddTransactionForm extends Component {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({
-        date, description , category , amount
-      })
+      body: JSON.stringify({date, description, category,  amount 
+        })
     })
     .then(response => response.json())
     .then(transaction => this.props.addTransaction(transaction))
 
     // clear the form after Submited
+ 
 
-    this.state = this.initialState
+    this.setState({
+      date: "",
+      description: "",
+      category: "",
+      amount: 0
+    })
 
   }
 
