@@ -33,12 +33,19 @@ class AccountContainer extends Component {
     });
   };
 
+  postTransaction = (transaction) => {
+    console.log(transaction.description);
+    // fetch("http://localhost:6001/transactions")
+    //   .then()
+    //   .then()
+  };
+
   render() {
     console.log(this.state.searchedTransactions);
     return (
       <div>
         <Search handleSearch={this.handleSearch} />
-        <AddTransactionForm />
+        <AddTransactionForm postTransaction={this.postTransaction} />
         <TransactionsList transactions={this.state.searchedTransactions} />
       </div>
     );
