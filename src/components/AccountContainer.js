@@ -12,7 +12,8 @@ class AccountContainer extends Component {
       description: "", 
       category: "", 
       amount: ""
-    }
+    }, 
+    search: ""
   }
 
   componentDidMount() {
@@ -23,7 +24,10 @@ class AccountContainer extends Component {
 
 
   renderTransactions = () => {
-    let copiedTransactions = this.state.transactions
+    let copiedTransactions = [...this.state.transactions]
+    if (this.state.search !== ""){
+      return copiedTransactions.filter(transactions => transactions.description.toLowerCase().includes(this.state.search.toLowerCase()))
+    }
     return copiedTransactions
   }
 
@@ -49,7 +53,7 @@ class AccountContainer extends Component {
     .then(resp => resp.json())
     .then(createdTransaction => {
       this.setState({ 
-        transactions: [...this.state.transactions, createdTransaction], 
+        transactions: [createdTransaction, ...this.state.transactions], 
         newTransaction: {
           date: "", 
           description: "", 
@@ -60,11 +64,25 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSearchInput = (event) => {
+    this.setState({search: event.target.value})
+  }
+
+  handleSearchRequest = () => {
+    if (!this.state.transactions.find(transaction => transaction.description === this.state.search)) {
+      alert("Are You Sure You Typed That Correctly?")
+    }
+  }
+
   render() {
-    console.log(this.state.newTransaction)
+    console.log(this.state.search)
     return (
       <div>
-        <Search />
+        <Search 
+          handleSearchInput={this.handleSearchInput} 
+          handleSearchRequest={this.handleSearchRequest}
+          search={this.state.search}
+        />
         <AddTransactionForm 
           newTransaction={this.state.newTransaction}
           handleFormInput={this.handleFormInput} 
