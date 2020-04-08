@@ -83,6 +83,22 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "1992-03-10",
+      "name": "",
+      "description": "PayPal from David, plane tickets",
+      "category": "Transportation",
+      "amount": "600",
+      "id": 13
+    },
+    {
+      "date": "2020-04-08",
+      "name": "",
+      "description": "Five Guys, burger and fries",
+      "category": "Food",
+      "amount": "-15",
+      "id": 14
     }
   ]
 }
