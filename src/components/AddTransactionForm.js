@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+
   render() {
+    console.log("Hello")
     return (
       <div className="ui segment">
         <form className="ui form">
