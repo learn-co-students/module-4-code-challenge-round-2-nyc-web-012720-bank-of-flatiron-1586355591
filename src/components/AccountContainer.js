@@ -46,11 +46,8 @@ class AccountContainer extends Component {
   render() {
     let transactionsCopy = [...this.state.transactions]
     transactionsCopy = transactionsCopy.filter(transaction => transaction.description.toLowerCase().includes(this.state.searchText))
-    if (this.state.sortBy === "category") {
-      transactionsCopy.sort((transactionA, transactionB) => transactionA.category.localeCompare(transactionB.category))
-    }
-    if (this.state.sortBy === "description") {
-      transactionsCopy.sort((transactionA, transactionB) => transactionA.description.localeCompare(transactionB.description))
+    if (this.state.sortBy !== "none") {
+      transactionsCopy.sort((transactionA, transactionB) => transactionA[this.state.sortBy].localeCompare(transactionB[this.state.sortBy]))
     }
     return (
       <div>
