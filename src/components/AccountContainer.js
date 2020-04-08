@@ -41,9 +41,13 @@ class AccountContainer extends Component {
     }
   }
 
+  Capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
   handleChange = (event) => {
       this.setState({
-        searchTerm: event.target.value
+        searchTerm: this.Capitalize(event.target.value)
       })
   }
 
