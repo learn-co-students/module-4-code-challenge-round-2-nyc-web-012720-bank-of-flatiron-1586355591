@@ -83,6 +83,34 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-24",
+      "description": "lol",
+      "category": "dsfds",
+      "amount": "0.55",
+      "id": 13
+    },
+    {
+      "date": "2020-04-24",
+      "description": "mcdonald",
+      "category": "food",
+      "amount": "10.00",
+      "id": 14
+    },
+    {
+      "date": "2020-04-02",
+      "description": "flatiron tuition",
+      "category": "school",
+      "amount": "20000",
+      "id": 15
+    },
+    {
+      "date": "2020-04-22",
+      "description": "mcdonald",
+      "category": "for friendds",
+      "amount": "20.00",
+      "id": 16
     }
   ]
 }
