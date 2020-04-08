@@ -15,7 +15,6 @@ class AddTransactionForm extends Component {
 
   submitHandler = () => {
     // event.preventDefault() not necessary, I want it to referesh to display the new transaction, clear the form, and reset the state of this component
-    console.log(this.state)
 
     fetch("http://localhost:6001/transactions", {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.

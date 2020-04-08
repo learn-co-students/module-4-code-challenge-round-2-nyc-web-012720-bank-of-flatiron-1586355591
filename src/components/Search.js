@@ -13,7 +13,8 @@ const Search = (props) => {
         placeholder={"Search your Recent Transactions"}
         onChange={filterHandle}
       />
-      <i className="circular search link icon"></i>
+      <br/>
+      <button onClick={props.switchSort}>Sorting/Searching by: {props.sort}</button>
     </div>
   );
 };

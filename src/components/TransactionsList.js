@@ -6,11 +6,13 @@ const TransactionsList = (props) => {
   const renderTransactions = () => {
 
     let transToDisplay = props.transactions.filter(trans => {
-      return trans.description.includes(props.filter)
+      return trans[props.sort].toLowerCase().includes(props.filter.toLowerCase())
     })
 
+    transToDisplay.sort((a,b) => a[props.sort] < b[props.sort] ? -1: 1)
+
     return transToDisplay.map(e => {
-      return <Transaction key ={e.id} trans={e}/>
+      return <Transaction key ={e.id} trans={e} delete={() => props.delete(e.id)}/>
     })
   }
 
@@ -29,6 +31,9 @@ const TransactionsList = (props) => {
           </th>
           <th>
             <h3 className="ui center aligned header">Amount</h3>
+          </th>
+          <th>
+            <h3 className="ui center aligned header">Delete</h3>
           </th>
         </tr>
         {renderTransactions()}
