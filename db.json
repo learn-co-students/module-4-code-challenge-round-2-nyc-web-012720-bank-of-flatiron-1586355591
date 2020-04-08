@@ -50,13 +50,6 @@
       "amount": 50
     },
     {
-      "id": 8,
-      "date": "2019-12-09",
-      "description": "Lyft Ride",
-      "category": "Transportation",
-      "amount": -13.25
-    },
-    {
       "id": 9,
       "date": "2019-12-11",
       "description": "Paycheck from Bob's Burgers",
@@ -83,6 +76,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-17",
+      "description": "Lets Add a New one",
+      "category": "afs",
+      "amount": 23,
+      "id": 17
     }
   ]
 }
