@@ -1,12 +1,21 @@
 import React from "react";
 
-const Transaction = () => {
+//SAMPLE OBJECT
+// {
+//   id: 1,
+//   date: "2019-12-01",
+//   description: "Paycheck from Bob's Burgers",
+//   category: "Income",
+//   amount: 1000
+//   },
+
+const Transaction = ({transaction}) => {
   return (
     <tr>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
+      <td>{transaction.date}</td>
+      <td>{transaction.description}</td>
+      <td>{transaction.category}</td>
+      <td>{transaction.amount}</td>
     </tr>
   );
 };
