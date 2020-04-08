@@ -72,12 +72,22 @@ class AccountContainer extends Component {
     }
   }
 
+  deleteTransaction = (deletedTransaction) => {
+    fetch(`http://localhost:6001/transactions/${deletedTransaction.id}`, {
+      method: "DELETE"
+    })
+    let updatedTransactions = this.state.transactions.filter(transaction => deletedTransaction.id !== transaction.id)
+    this.setState({
+      transactions: updatedTransactions
+    })
+  }
+
   render() {
     return (
       <div>
         <Search handleSearchTerm={this.handleSearchTerm} searchTerm={this.state.searchTerm} handleSortBy={this.handleSortBy}/>
         <AddTransactionForm handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={this.handleSort()}/>
+        <TransactionsList transactions={this.handleSort()} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }

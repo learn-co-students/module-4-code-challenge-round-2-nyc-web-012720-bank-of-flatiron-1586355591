@@ -90,13 +90,6 @@
       "category": "Food",
       "amount": "180",
       "id": 13
-    },
-    {
-      "date": "2019-12-09",
-      "description": "Iphone",
-      "category": "Electronics",
-      "amount": "999",
-      "id": 14
     }
   ]
 }
