@@ -21,9 +21,7 @@ class AccountContainer extends Component {
       .catch(err => console.log(err))
   }
 
-  addTransaction = (transaction) => {
-    const {date, description, category, amount} = transaction;
-    
+  addTransaction = ({date, description, category, amount}) => {
     const newTransactionHTTPObj = {
       'method': 'POST',
       'headers': {
@@ -50,10 +48,19 @@ class AccountContainer extends Component {
       .catch(err => console.log(err))
   }
 
+  handleSearch = (event) => {
+    event.persist();
+    this.setState(() => {
+      const searchTerm = event.target.value
+      const displayedTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().indexOf(searchTerm) >= 0);
+      return {searchTerm, displayedTransactions}
+    })
+  }
+
   render() {
     return (
       <div>
-        <Search />
+        <Search searchTerm={this.state.searchTerm} onHandleSearch={this.handleSearch}/>
         <AddTransactionForm handleSubmit={this.addTransaction}/>
         <TransactionsList transactions={this.state.displayedTransactions}/>
       </div>
