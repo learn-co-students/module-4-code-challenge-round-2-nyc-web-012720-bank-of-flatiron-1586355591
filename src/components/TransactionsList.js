@@ -12,16 +12,16 @@ const TransactionsList = (props) => {
       <tbody>
         <tr>
           <th>
-            <h3 className="ui center aligned header">Date</h3>
+            <button className="ui center aligned header" name="date" onClick={event => props.handleSort(event)}>Date</button>
           </th>
           <th>
-            <h3 className="ui center aligned header">Description</h3>
+            <button className="ui center aligned header" name="description" onClick={event => props.handleSort(event)}>Description</button>
           </th>
           <th>
-            <h3 className="ui center aligned header">Category</h3>
+            <button name="category" onClick={event => props.handleSort(event)} className="ui center aligned header">Category</button>
           </th>
           <th>
-            <h3 className="ui center aligned header">Amount</h3>
+            <button name="amount" onClick={event => props.handleSort(event)} className="ui center aligned header">Amount</button>
           </th>
         </tr>
         {iterateThroughTransactions()}

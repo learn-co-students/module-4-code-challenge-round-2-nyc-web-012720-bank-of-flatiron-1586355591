@@ -13,7 +13,8 @@ class AccountContainer extends Component {
       category: "", 
       amount: ""
     }, 
-    search: ""
+    search: "", 
+    sort: ""
   }
 
   componentDidMount() {
@@ -27,6 +28,9 @@ class AccountContainer extends Component {
     let copiedTransactions = [...this.state.transactions]
     if (this.state.search !== ""){
       return copiedTransactions.filter(transactions => transactions.description.toLowerCase().includes(this.state.search.toLowerCase()))
+    }
+    if (this.state.sort !== "") {
+      copiedTransactions = copiedTransactions.sort((a,b) => a[this.state.sort] > b[this.state.sort] ? 1 : -1 )
     }
     return copiedTransactions
   }
@@ -74,8 +78,13 @@ class AccountContainer extends Component {
     }
   }
 
+  handleSort = (event) => {
+    let type = event.target.name
+    this.setState({ sort: type })
+  }
+
   render() {
-    console.log(this.state.search)
+    console.log(this.state.sort)
     return (
       <div>
         <Search 
@@ -88,7 +97,7 @@ class AccountContainer extends Component {
           handleFormInput={this.handleFormInput} 
           handleSubmitTransaction={this.handleSubmitTransaction}
           />
-        <TransactionsList renderTransactions={this.renderTransactions()} />
+        <TransactionsList handleSort={this.handleSort} renderTransactions={this.renderTransactions()} />
       </div>
     );
   }
