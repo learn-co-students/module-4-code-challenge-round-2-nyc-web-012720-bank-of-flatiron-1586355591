@@ -12,6 +12,10 @@ class AccountContainer extends Component {
   }
 
   componentDidMount(){
+    this.fetch()
+  }
+
+  fetch = () => {
     fetch("http://localhost:6001/transactions")
     .then(res=>res.json())
     .then(transactions => this.setState({transactions}))
@@ -30,17 +34,21 @@ class AccountContainer extends Component {
     })
   }
 
-  handleSortChange = (event) => {
-    this.setState({
-      sort: event.target.value
-    })
-  }
+ 
 
   searchTransactions = () => {
     let transactions = this.state.transactions
     if (this.state.search !== ""){
       return transactions.filter(transaction => transaction.description.includes(this.state.search))
     } else {return transactions}
+  }
+
+  //advanced deliverables
+
+  handleSortChange = (event) => {
+    this.setState({
+      sort: event.target.value
+    })
   }
 
   sortTransactions = () => {
@@ -52,6 +60,12 @@ class AccountContainer extends Component {
     } else return searched
   }
 
+  handleClick = (id) => {
+    fetch(`http://localhost:6001/transactions/${id}`, {method: "DELETE"})
+    .then(res=>res.json())
+    .then(transaction => console.log(transaction))
+    this.fetch()
+  }
  
 
   render() {
@@ -62,7 +76,7 @@ class AccountContainer extends Component {
           handleSortChange={this.handleSortChange}
           sort={this.state.sort}/>
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList transactions={this.sortTransactions()}/>
+        <TransactionsList transactions={this.sortTransactions()} handleClick={this.handleClick}/>
       </div>
     );
   }

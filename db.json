@@ -86,24 +86,10 @@
     },
     {
       "date": "2019-12-18",
-      "description": "Cereal",
-      "category": "Food",
-      "amount": 5,
+      "description": "cereal",
+      "category": "food",
+      "amount": "5",
       "id": 13
-    },
-    {
-      "date": "2019-12-19",
-      "description": "car",
-      "category": "Transportation",
-      "amount": "20000.75",
-      "id": 14
-    },
-    {
-      "date": "2019-12-20",
-      "description": "mansion",
-      "category": "house",
-      "amount": "10000000",
-      "id": 15
     }
   ]
 }
