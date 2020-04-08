@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import AccountContainer from "./AccountContainer";
 import "../stylesheets/App.css";
+import Transaction from "./Transaction";
 
 class App extends Component {
+
+
+
   render() {
     return (
       <div className="ui raised segment">
@@ -16,3 +20,14 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+// app 
+//    -account container 
+
+        //  -Transaction
+        //  - transaction list 
+        //  - search 
+        //  - add transaction 
