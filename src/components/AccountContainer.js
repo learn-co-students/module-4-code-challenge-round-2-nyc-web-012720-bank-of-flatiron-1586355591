@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
-import Filter from "./Filter";
+import FilterT from "./FilterT";
 
 class AccountContainer extends Component {
 
@@ -23,12 +23,11 @@ class AccountContainer extends Component {
   }
 
   handleNewT = newT => {
-    // console.log("Inside newT", newT)
     this.setState({tList: [...this.state.tList, newT]})
   }
 
   handleFilterChange = e => {
-    
+    console.log("we're inside filterchange", e.target)
   }
 
   handleSearchClick = () => {
@@ -48,7 +47,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleSeachChange={this.handleSeachChange} handleSearchClick={this.handleSearchClick}/>
         <AddTransactionForm handleNewChange={this.handleNewChange} handleNewT={this.handleNewT}/>
-        <Filter/>
+        <FilterT handleFilterChange={this.handleFilterChange}/>
         <TransactionsList tList={this.handleSearchClick()}/>
       </div>
     );

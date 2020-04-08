@@ -111,6 +111,20 @@
       "category": "Food",
       "amount": "15",
       "id": 16
+    },
+    {
+      "date": "2020-04-18",
+      "description": "BEEF 🥩",
+      "category": "FOOD",
+      "amount": "5",
+      "id": 17
+    },
+    {
+      "date": "2020-04-16",
+      "description": "My filter doesn't want to work",
+      "category": "sad",
+      "amount": "00",
+      "id": 18
     }
   ]
 }
