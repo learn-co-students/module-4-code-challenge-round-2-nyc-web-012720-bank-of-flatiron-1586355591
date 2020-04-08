@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TransactionsList from './TransactionsList';
 import Search from './Search';
 import AddTransactionForm from './AddTransactionForm';
+import SelectSort from './SelectSort';
+
 const transURL = ' http://localhost:3000/transactions';
 class AccountContainer extends Component {
   state = {
@@ -9,6 +11,7 @@ class AccountContainer extends Component {
     newTrans: {},
     target: null,
     search: null,
+    sort: '',
   };
   componentDidMount() {
     fetch(transURL)
@@ -59,10 +62,32 @@ class AccountContainer extends Component {
 
     this.setState({ target, search });
   };
+  handleSort = (event) => {
+    let sort = event.target.value;
+    this.setState({ sort }, () => console.log(this.state.sort));
+  };
+  handleSortSubmit = (event) => {
+    event.preventDefault();
+
+    let clone = this.state.transactions;
+    let option = this.state.sort;
+
+    clone.sort((a, b) => {
+      let nameA = a[option].toLowerCase();
+      let nameB = b[option].toLowerCase();
+      return nameA > nameB ? 1 : -1;
+    });
+  };
   render() {
     return (
       <div>
+        <SelectSort
+          handleSort={this.handleSort}
+          sort={this.state.sort}
+          handleSortSubmit={this.handleSortSubmit}
+        />
         <Search handleSearch={this.handleSearch} />
+
         <AddTransactionForm handleSubmit={this.handleSubmit} />
         {this.renderTransaction()}
       </div>
