@@ -6,6 +6,8 @@ import AddTransactionForm from "./AddTransactionForm";
 class AccountContainer extends Component {
 
   //The new transaction state and submit function probably should have been on the AddTransactionForm, I could have avoided passing some data around, but I still would have had to create a function that was passed down to add the new transaction to the list here
+
+  //################## CORE DELIVERABLES ###################
   state = {
     transactions: [],
     date: "",
@@ -42,6 +44,21 @@ class AccountContainer extends Component {
     .then(resp => resp.json())
     .then(result => this.setState({transactions: [...this.state.transactions, result]}))
   }
+
+  //################# BONUS DELIVERABLES ###################
+
+  deleteTxn = (id) => {
+    const deleteObj = {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json',
+      'accept': 'application/json'
+    }
+    }
+    fetch(`http://localhost:6001/transactions/${id}`, deleteObj)
+    .then(resp => resp.json())
+    .then(this.setState({transactions: this.state.transactions.filter(transaction => transaction.id !== id)}))
+  }
+
   
   render() {
     let displayTransactions = this.state.transactions.filter(transaction => transaction.description.includes(this.state.searchTerm))
@@ -55,7 +72,8 @@ class AccountContainer extends Component {
         handleChange={this.handleChange}
         submitTxn={this.submitTxn}/>
         <TransactionsList 
-        transactions={displayTransactions}/>
+        transactions={displayTransactions}
+        deleteTxn={this.deleteTxn}/>
       </div>
     );
   }
