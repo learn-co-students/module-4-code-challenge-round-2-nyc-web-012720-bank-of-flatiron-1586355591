@@ -6,6 +6,7 @@ const TransactionsList = () => {
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
+        
           <th>
             <h3 className="ui center aligned header">Date</h3>
           </th>
