@@ -10,10 +10,14 @@ class App extends Component {
   };
 
   componentDidMount() {
+    this.fetchTransactions();
+  }
+
+  fetchTransactions = () => {
     return fetch(`http://localhost:6001/transactions`)
       .then((resp) => resp.json())
       .then((resp) => this.setState({ transactions: resp }));
-  }
+  };
 
   handleSubmit = (newTransaction) => {
     fetch(`http://localhost:6001/transactions`, {
@@ -30,11 +34,28 @@ class App extends Component {
     let query = e.target.value;
     let results = this.state.transactions.filter((transaction) => {
       return (
-        transaction.description.toString().includes(query.toString()) &&
-        transaction
+        transaction.description
+          .toString()
+          .toUpperCase()
+          .includes(query.toString().toUpperCase()) && transaction
       );
     });
-    return this.setState({ transactions: results });
+    return results.length > 1
+      ? this.setState({ transactions: results })
+      : this.fetchTransactions();
+  };
+
+  handleDelete = (transaction) => {
+    let newTransactions = this.state.transactions.filter(
+      (transaction) => transaction.id !== transaction
+    );
+
+    console.log("BOUTTA DELETE SUMN", newTransactions);
+    fetch(`http://localhost:6001/transactions/${transaction}`, {
+      method: "DELETE",
+    });
+
+    return this.setState({ transactions: newTransactions });
   };
 
   render() {
@@ -47,6 +68,7 @@ class App extends Component {
           transactions={this.state.transactions}
           handleSubmit={this.handleSubmit}
           handleSearch={this.handleSearch}
+          handleDelete={this.handleDelete}
         />
       </div>
     );
