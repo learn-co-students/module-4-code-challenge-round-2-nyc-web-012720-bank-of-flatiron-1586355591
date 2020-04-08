@@ -8,13 +8,18 @@ class AccountContainer extends Component {
     transactions: [],
     newTrans: {},
     target: null,
+    search: null,
   };
   componentDidMount() {
     fetch(transURL)
       .then((response) => response.json())
       .then((transactions) => this.setState({ transactions }));
   }
-
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.search) {
+      this.setState({ target: null, search: null });
+    }
+  }
   renderTransaction = () => {
     if (this.state.target) {
       return <TransactionsList transaction={this.state.target} />;
@@ -41,16 +46,18 @@ class AccountContainer extends Component {
   };
 
   handleSearch = (event) => {
-    let target = event.target.value;
-    let mapping = this.state.transactions.map((transaction) => {
+    let target;
+    let search = event.target.value;
+
+    this.state.transactions.map((transaction) => {
       let word = transaction.description.toLowerCase();
-      if (word.includes(target)) {
+      if (word.includes(search)) {
         target = transaction;
         return target;
       }
     });
 
-    this.setState({ target }, () => console.log(this.state.target));
+    this.setState({ target, search });
   };
   render() {
     return (
