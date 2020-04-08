@@ -90,6 +90,20 @@
       "category": "Fashion",
       "amount": "32",
       "id": 13
+    },
+    {
+      "date": "2020-04-09",
+      "description": "Fran birthday gift",
+      "category": "Gift",
+      "amount": "-2000",
+      "id": 14
+    },
+    {
+      "date": "2020-04-10",
+      "description": "Coffee",
+      "category": "Food",
+      "amount": "-4.00",
+      "id": 15
     }
   ]
 }

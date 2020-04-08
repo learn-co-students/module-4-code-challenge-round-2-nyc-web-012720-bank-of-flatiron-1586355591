@@ -21,8 +21,7 @@ class AccountContainer extends Component {
       .catch(err => console.log(err))
   }
 
-  addTransaction = (event, transaction) => {
-    event.preventDefault();
+  addTransaction = (transaction) => {
     const {date, description, category, amount} = transaction;
     
     const newTransactionHTTPObj = {
@@ -37,7 +36,16 @@ class AccountContainer extends Component {
     fetch(this.transactionsUrl, newTransactionHTTPObj)
       .then(res => res.json())
       .then(transaction => {
-        console.log(transaction)
+        this.setState({
+          transactions:[
+            ...this.state.transactions,
+            transaction
+          ],
+          displayedTransactions:[
+            ...this.state.displayedTransactions,
+            transaction
+          ]
+        })
       })
       .catch(err => console.log(err))
   }

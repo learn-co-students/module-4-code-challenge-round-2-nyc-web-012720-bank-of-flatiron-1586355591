@@ -14,10 +14,21 @@ class AddTransactionForm extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.handleSubmit(this.state);
+    this.setState({
+      date: "",
+      description: "",
+      category: "",
+      amount: ""
+    })
+  }
+
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form" onSubmit={e => this.props.handleSubmit(e, this.state)}>
+        <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="inline fields">
             <input type="date" name="date" onChange={this.handleInputChange} value={this.state.date}/>
             <input type="text" name="description" placeholder="Description" onChange={this.handleInputChange} value={this.state.description}/>
