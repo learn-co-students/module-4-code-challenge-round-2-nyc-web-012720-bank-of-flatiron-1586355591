@@ -83,6 +83,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-09",
+      "description": "Be hold NYC!",
+      "category": "food",
+      "amount": "0.01",
+      "id": 13
     }
   ]
 }
