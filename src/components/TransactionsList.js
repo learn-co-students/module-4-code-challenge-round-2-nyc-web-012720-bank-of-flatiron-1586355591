@@ -9,7 +9,6 @@ const TransactionsList = props => {
     })
   }
 
-
   return (
     <table className="ui celled striped padded table">
       <tbody>

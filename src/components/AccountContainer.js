@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import Filter from "./Filter";
 
 class AccountContainer extends Component {
 
   state = {
     tList: [],
-    tSearch: ''
+    tSearch: '',
+    tFilter: ''
   }
 
   componentDidMount() {
@@ -20,6 +22,15 @@ class AccountContainer extends Component {
     this.setState({tSearch: e.target.value})
   }
 
+  handleNewT = newT => {
+    // console.log("Inside newT", newT)
+    this.setState({tList: [...this.state.tList, newT]})
+  }
+
+  handleFilterChange = e => {
+    
+  }
+
   handleSearchClick = () => {
     const list = [...this.state.tList]
     if (list !== "") {
@@ -29,12 +40,15 @@ class AccountContainer extends Component {
     }
   }
 
+
+
   render() {
-    console.log("inside render",this.state.tSearch)
+    // console.log("inside render",this.state.tSearch)
     return (
       <div>
         <Search handleSeachChange={this.handleSeachChange} handleSearchClick={this.handleSearchClick}/>
-        <AddTransactionForm />
+        <AddTransactionForm handleNewChange={this.handleNewChange} handleNewT={this.handleNewT}/>
+        <Filter/>
         <TransactionsList tList={this.handleSearchClick()}/>
       </div>
     );
