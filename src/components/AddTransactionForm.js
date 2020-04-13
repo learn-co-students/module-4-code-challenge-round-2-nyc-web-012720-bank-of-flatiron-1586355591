@@ -3,10 +3,9 @@ import React, { Component } from "react";
 class AddTransactionForm extends Component {
   state = {
     date: "", 
-    name: "", 
     description: "", 
     category: "", 
-    amount: ""
+    amount: 0
   }
 
   handleChange = (event) => {
@@ -37,10 +36,9 @@ class AddTransactionForm extends Component {
     // if I have more time, come back to clean up code and make DRY by saving initial state as a variable
     this.setState({
         date: "",
-        name: "",
         description: "",
         category: "",
-        amount: ""
+        amount: 0
     })
     // form is not resetting date and amount for some reason (number input form)
   }

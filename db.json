@@ -131,6 +131,53 @@
       "category": "Misc.",
       "amount": "1000",
       "id": 18
+    },
+    {
+      "date": "",
+      "name": "",
+      "description": "",
+      "category": "",
+      "amount": "",
+      "id": 19
+    },
+    {
+      "date": "2001-01-01",
+      "name": "",
+      "description": "Food",
+      "category": "Food",
+      "amount": "1000",
+      "id": 20
+    },
+    {
+      "date": "",
+      "name": "",
+      "description": "",
+      "category": "",
+      "amount": "",
+      "id": 21
+    },
+    {
+      "date": "2020-01-01",
+      "name": "",
+      "description": "Five Guys, burger and fries",
+      "category": "Food",
+      "amount": "50",
+      "id": 22
+    },
+    {
+      "date": "1992-03-10",
+      "name": "",
+      "description": "Birthday Cake",
+      "category": "Food",
+      "amount": "55",
+      "id": 23
+    },
+    {
+      "date": "2020-04-12",
+      "description": "Easter Supplies",
+      "category": "Holidays",
+      "amount": "10",
+      "id": 24
     }
   ]
 }
