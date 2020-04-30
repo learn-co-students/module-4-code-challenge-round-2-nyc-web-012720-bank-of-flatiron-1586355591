@@ -38,21 +38,6 @@ class AccountContainer extends Component {
     return displayTransactions
   }
 
-  // handleFilter = (event) => {
-  //   let copyTransactions = [...this.state.transactions]
-
-  //   if (event.target.value.length > 0) {
-  //     let filterResults = copyTransactions.filter(transaction => transaction.description.toLowerCase().includes(event.target.value.toLowerCase()))
-  //     this.setState({
-  //       filtered: filterResults
-  //     })
-  //   } else {
-  //     this.setState({
-  //       filtered: copyTransactions
-  //     })
-  //   }
-  // }
-
   render() {
     // console.log(this.state.transactions)
     return (
